@@ -22,7 +22,7 @@ class soldier(unit.unit):
         return c
 
     def pistol(self, lvl):
-        self.imgBullit = "3.png"
+        self.imgBullit = "bul.png"
         self.damage = 1
         self.gunX = 4
         self.gunY = -15
@@ -54,7 +54,7 @@ class soldier(unit.unit):
                                  (self.gunX - 16, self.gunY, self.gunAngle + 15)]
 
     def bigGun(self, lvl):
-        self.imgBullit = "3.png"
+        self.imgBullit = "bul.png"
         self.gunX = 4
         self.gunY = -15
         self.gunAngle = 270

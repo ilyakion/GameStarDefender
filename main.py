@@ -33,13 +33,13 @@ clock = pygame.time.Clock()
 
 countGuns = 2
 screenShot = 1
-chanceSpawnStar = 10
+chanceSpawnStar = 1000
 chanceSpawnEnemy = 10
-chanceSpawnBoost = 10
+chanceSpawnBoost = 1000
 speedOfUpChanceSpawnEnemy = 10000  # 10000
 gameLength = 10000
 
-ship = soldier("1.png", size=(100, 100), position=(int(sizescreen[0] / 2), sizescreen[1] - 200), speed=10)
+ship = soldier("ship.png", size=(100, 100), position=(int(sizescreen[0] / 2), sizescreen[1] - 200), speed=10)
 ship.sethealth(3)
 ship.setGan(1, 1)
 end = button("Выход", (-1, -1), 30, WHITE, BLACK)
@@ -56,7 +56,7 @@ for i in range(random.randint(int(sizescreen[0] * sizescreen[1] / chanceSpawnSta
     stars.append(spawnStar(position=(random.randint(0, sizescreen[0]), random.randint(0, sizescreen[1])),
                            angle=random.randint(-3, 3)))
 
-firstBoost = objectI("5.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5, angle=random.randint(0, 180))
+firstBoost = objectI("box.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5, angle=random.randint(0, 180))
 
 buttons = [health, coins, end]
 Enemys = []
@@ -83,7 +83,7 @@ while running:
 
     if not gameOver and screenShot < speedOfUpChanceSpawnEnemy:
         if random.randint(0, int(chanceSpawnBoost)) <= 0:
-            b = objectI("5.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5, angle=random.randint(0, 180))
+            b = objectI("box.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5, angle=random.randint(0, 180))
             Boosts.append(b)
 
         if random.randint(0, int(chanceSpawnEnemy)) <= 0:
