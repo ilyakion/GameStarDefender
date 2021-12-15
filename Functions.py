@@ -11,7 +11,7 @@ def spawnStar(position,angle,size=(0,30)):
         s = random.randint(int(size[1]/coef), size[1])
     else:
         s = random.randint(size[0], int(size[1]/coef))
-    return objectI("2.png", size=(s, s),
+    return objectI("star.png", size=(s, s),
                              position=position,
                              angle=angle,
                              speed=random.randint(1,int(s/7)+1)

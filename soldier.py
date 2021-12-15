@@ -65,11 +65,11 @@ class soldier(unit.unit):
             self.pointsToFire = [(self.gunX, self.gunY, self.gunAngle)]
         elif lvl == 3:
             self.gunSize = (20, 4)
-            self.damage = 2
+            self.damage = 3
             self.pointsToFire = [(self.gunX + 16, self.gunY, self.gunAngle), (self.gunX - 16, self.gunY, self.gunAngle)]
         elif lvl == 4:
             self.gunSize = (20, 4)
-            self.damage = 3
+            self.damage = 4
             self.pointsToFire = [(self.gunX + 16, self.gunY, self.gunAngle), (self.gunX - 16, self.gunY, self.gunAngle)]
         elif lvl == 5:
             self.gunSize = (30, 6)
@@ -77,6 +77,6 @@ class soldier(unit.unit):
             self.pointsToFire = [(self.gunX + 16, self.gunY, self.gunAngle), (self.gunX - 16, self.gunY, self.gunAngle)]
         else:
             self.gunSize = (30, 6)
-            self.damage = 5
+            self.damage = 6
             self.pointsToFire = [(self.gunX, self.gunY, self.gunAngle), (self.gunX + 16, self.gunY, self.gunAngle - 6),
                                  (self.gunX - 16, self.gunY, self.gunAngle + 9)]
