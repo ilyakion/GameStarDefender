@@ -3,6 +3,9 @@ import math
 
 
 class objectI:
+    """
+    обьект с изображением
+    """
     def __init__(self, imgPath, position=(100, 100), size=(100, 100), speed=2, angle=0):
         """
         :param imgPath: Путь к скину /str/

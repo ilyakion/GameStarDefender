@@ -3,6 +3,9 @@ import bullit
 
 
 class soldier(unit.unit):
+    """
+    unit с оружием
+    """
     def setGan(self, type=1, lvl=1):
         """
         :param type: тип оружия

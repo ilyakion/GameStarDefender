@@ -1,6 +1,9 @@
 import unit
 
 class bullit(unit.unit):
+    """
+    unit который может наносить урон
+    """
     def setDamage(self, damage):
         """
         :param damage: Количество урона который будет наносить пуля /int/

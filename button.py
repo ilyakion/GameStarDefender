@@ -2,8 +2,9 @@ import pygame
 
 
 class button:
-    """Create a button, then blit the surface in the while loop"""
-
+    """
+    конпка или рамка с текстом
+    """
     def __init__(self, text="text", position=(100, 100), font=10, bg="black", color="White", size=(0, 0)):
         """
         :param text: текст в кнопке /str/
