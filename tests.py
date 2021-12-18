@@ -32,5 +32,10 @@ class Test(unittest.TestCase):
         a.fly()
         self.assertEqual(a.position, (speed, 0))
 
+    def test_objectGoTO(self):
+        a = objectI("bul.png", position=(0, 0))
+        a.goTo(10,10)
+        self.assertEqual(a.position, (10, 10))
+
 if __name__ == "__main__":
     unittest.main()
