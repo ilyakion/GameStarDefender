@@ -4,11 +4,18 @@ import pygame
 class button:
     """Create a button, then blit the surface in the while loop"""
 
-    def __init__(self, text="text", position=(100, 100), font=10, bg="black", color="White", feedback="text", size=(0, 0)):
+    def __init__(self, text="text", position=(100, 100), font=10, bg="black", color="White", size=(0, 0)):
+        """
+        :param text: текст в кнопке /str/
+        :param position: Позиция звезды /(int:x, int:y)/
+        :param font: Шрифт текста /int/
+        :param bg: Цвет кнопки /str/
+        :param color: Цвет текста /str/
+        :param size: Размер в пикселях /(int:sizeX, int:sizeY)/
+        """
         self.x, self.y = position
         self.position = position
         self.font = pygame.font.SysFont("Arial", font)
-        self.feedback = feedback
         self.change_text(text, bg)
         self.text = self.font.render(text, 1, pygame.Color(color))
         if size[0] != 0 and size[1] != 0:
@@ -24,6 +31,11 @@ class button:
 
 
     def change_text(self, text="newtext", bg="black", color = "White"):
+        """
+        :param text: На какой текст сменить текст в кнопки /str/
+        :param bg: На какой цвет сменить цвет кнопки /str/
+        :param color: На какой цвет сменить цвет текста /str/
+        """
         self.text = self.font.render(str(text), 1, pygame.Color(color))
         self.size = self.text.get_size()
         self.surface = pygame.Surface(self.size)
@@ -33,8 +45,15 @@ class button:
         self.sizeX, self.sizeY = self.rect.size
 
     def output(self, screen):
+        """
+        :param screen: Экран на котором выводить обьект /pygame.display/
+        """
         screen.blit(self.surface, (self.x, self.y))
 
     def click(self, mouse, event):
+        """
+        :param mouse: Координаты мыши /(int:x, int:y)/
+        :param event: Выполняемая функция при нажатии /functions/
+        """
         if mouse[0] > self.x and mouse[1] > self.y and mouse[0] < self.sizeX and mouse[1] < self.sizeY:
             event()

@@ -4,6 +4,13 @@ import math
 
 class objectI:
     def __init__(self, imgPath, position=(100, 100), size=(100, 100), speed=2, angle=0):
+        """
+        :param imgPath: Путь к скину /str/
+        :param position: Позиция в пикселях /(int:x, int:y)/
+        :param size: Размер в пикселях /(int:sizeX, int:sizeY)/
+        :param speed: Скорость с которй будет двигаться обьекст /int/
+        :param angle: Угол на который повернуть скин в градусах /int/
+        """
         self.imgPath = imgPath
         self.speed = speed
         self.position = position
@@ -18,16 +25,24 @@ class objectI:
         self.reDraw()
 
     def reDraw(self):
+        """
+        обновляет отрисовку обьект
+        """
         self.rotImage = pygame.transform.rotate(self.image, self.angle)
         self.rect = self.image.get_rect(bottomright=(self.sizeX, self.sizeY))
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
     def output(self, screen):
+        """
+        :param screen: Экран на котором выводить обьект /pygame.display/
+        """
         screen.blit(self.rotImage, self.rect)
 
     def go(self, angle):
-
+        """
+        :param angle: Угол в который будет двигаться обьект в градусах /int/
+        """
         angle = math.radians(angle)
 
         y = math.sin(angle) * self.speed
@@ -54,27 +69,29 @@ class objectI:
         self.rect.centery += y
 
     def goTo(self, ToX, ToY):
+        """
+        :param ToX: X на который переместиться
+        :param ToY: Y на который переместиться
+        """
         self.x = ToX
         self.y = ToY
         self.position = (self.x, self.y)
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
-    def delit(self):
-        del self
-
     def OutSideScrin(self, size, slog=0):
         """
-        print(self.x < (-self.sizeX / 2) - slog)
-        print(self.x > size[0] + (self.sizeX / 2) + slog)
-        print(self.y < (-self.sizeY / 2) - slog)
-        print(self.y > size[1] + (self.sizeY / 2) + slog)
+        :param size: Длина и ширина прямоугольника с x и y в верхним углу экрана /(int:sizeX, int:sizeY)/
+        :param slog: Расширение рамки на k пикселей со всех сторон /int:k/
         """
         if self.x < (-self.sizeX / 2) - slog or self.x > size[0] + (self.sizeX / 2) + slog or self.y < (-self.sizeY / 2) - slog or self.y > size[1] + (self.sizeY / 2) + slog:
             return True
         return False
 
     def setAlgleTo(self, i):
+        """
+        :param i: обьект с .x и .y
+        """
         x = self.x - i.x
         y = self.y - i.y
 

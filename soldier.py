@@ -4,6 +4,10 @@ import bullit
 
 class soldier(unit.unit):
     def setGan(self, type=1, lvl=1):
+        """
+        :param type: тип оружия
+        :param lvl: уровень оружия
+        """
         self.pointsToFire = []
         self.gunLvl = lvl
         self.gunTypeNomber = type
@@ -13,6 +17,9 @@ class soldier(unit.unit):
             self.gunType = self.bigGun(self.gunLvl)
 
     def fire(self):
+        """
+        Стреляет соответсвенно своей пушке
+        """
         c = []
         for i in self.pointsToFire:
             b = bullit.bullit(self.imgBullit, position=(self.x + i[0], self.y + i[1]), size=self.gunSize,
@@ -22,6 +29,9 @@ class soldier(unit.unit):
         return c
 
     def pistol(self, lvl):
+        """
+        :param lvl: Уровень оружия
+        """
         self.imgBullit = "bul.png"
         self.damage = 1
         self.gunX = 4
@@ -54,6 +64,9 @@ class soldier(unit.unit):
                                  (self.gunX - 16, self.gunY, self.gunAngle + 15)]
 
     def bigGun(self, lvl):
+        """
+        :param lvl: Уровень оружия
+        """
         self.imgBullit = "bul.png"
         self.gunX = 4
         self.gunY = -15

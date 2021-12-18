@@ -14,13 +14,11 @@ def off():
     running = False
     return
 
-
+# подготовка к запуску
 user32 = ctypes.windll.user32
 sizescreen = [user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)]
 print(sizescreen)
 
-WIDTH = 360
-HEIGHT = 480
 FPS = 30
 
 backgraund = BLACK
@@ -32,6 +30,7 @@ screen = pygame.display.set_mode(sizescreen, pygame.FULLSCREEN)
 pygame.display.set_caption("FirstGame")
 clock = pygame.time.Clock()
 
+# пораметры игры
 countGuns = 2
 screenShot = 1  # 1000
 chanceSpawnStar = 1000  # 1000
@@ -43,9 +42,11 @@ asteroidHealthMultiplier = 1000  # gameLength/1000
 gameLength = 10000  # 10000
 coins = 0
 
+# создаю корабь
 ship = soldier("ship.png", size=(100, 100), position=(int(sizescreen[0] / 2), sizescreen[1] - 200), speed=10)
 ship.sethealth(3)
 ship.setGan(1, 1)
+# создаю кнопки сверху слева
 end = button("Выход", (-1, -1), 30, WHITE, BLACK)
 health = button(str(ship.health), (-1, end.sizeY), 40, WHITE, BLACK)
 gameDuration = button("gameDuration", (-1, end.sizeY + health.sizeY), 40, WHITE, BLACK)
@@ -56,6 +57,7 @@ gameOverButton.y = sizescreen[1] // 2 - gameOverButton.sizeY // 2
 gameOverButton.change_text("VIKTORY!", WHITE, BLACK)
 stars = []
 
+# генерация звёзд
 for i in range(random.randint(int(sizescreen[0] * sizescreen[1] / chanceSpawnStar / 2),
                               int(sizescreen[0] * sizescreen[1] / chanceSpawnStar))):
     stars.append(spawnStar(position=(random.randint(0, sizescreen[0]), random.randint(0, sizescreen[1])),
@@ -64,6 +66,7 @@ for i in range(random.randint(int(sizescreen[0] * sizescreen[1] / chanceSpawnSta
 firstBoost = objectI("box.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5,
                      angle=random.randint(0, 180))
 
+# массивы с обьектами
 buttons = [health, gameDuration, end, tabletCoins]
 Enemys = []
 bullits = []
@@ -73,11 +76,12 @@ print("start")
 # Цикл игры
 gameOver = False
 running = True
+
+# основной цикл
 while running:
 
     # отслеживание событий
     for event in pygame.event.get():
-        # check for closing window
         if event.type == pygame.QUIT:
             off()
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -87,12 +91,15 @@ while running:
             if event.key == pygame.K_SPACE:
                 bullits += ship.fire()
 
+    # проверка на конец игры
     if not gameOver and screenShot < speedOfUpChanceSpawnEnemy:
+        # генерация коробок с улучшениями
         if random.randint(0, int(chanceSpawnBoost)) <= 0:
             b = objectI("box.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5,
                         angle=random.randint(0, 180))
             Boosts.append(b)
 
+        # генерация метиоритов
         if random.randint(0, int(chanceSpawnEnemy)) <= 0:
             pos = random.randint(25, 100)
             e = soldier("asteroid.png", size=(pos, pos), position=(random.randint(0, sizescreen[0]), -50), speed=5,
@@ -114,6 +121,7 @@ while running:
             ship.go(90)
 
         # процесс игры
+        # движение обьектов
         for i in range(len(Boosts)):
             Boosts[i].go(90)
             if i < len(Boosts) and Boosts[i].OutSideScrin(sizescreen, slog=50):
@@ -134,6 +142,7 @@ while running:
         for i in bullits:
             i.fly()
 
+        # отслеживание столкновений
         for i in range(len(Enemys)):
             if i < len(Enemys) and Enemys[i].rect.colliderect(ship.rect):
                 ship.health -= 1
@@ -164,6 +173,7 @@ while running:
             if i < len(bullits) and bullits[i].OutSideScrin(sizescreen, slog=50):
                 del bullits[i]
 
+        # Посткадровые изменения
         screenShot += 1
         chanceSpawnEnemy = speedOfUpChanceSpawnEnemy / screenShot
 
@@ -192,6 +202,7 @@ while running:
     for i in buttons:
         i.output(screen)
 
+    # проверка на конец игры
     if gameOver or screenShot >= gameLength:
         gameOverButton.output(screen)
 
