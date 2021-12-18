@@ -1,3 +1,6 @@
+import pygame
+import math
+import random
 from Functions import *
 from object import *
 from button import *
