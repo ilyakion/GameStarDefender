@@ -14,7 +14,7 @@ def off():
     running = False
     return
 
-# подготовка к запуску
+# подготовка к запуску. Использовал материал из https://pythonru.com/uroki/biblioteka-pygame-chast-1-vvedenie
 user32 = ctypes.windll.user32
 sizescreen = [user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)]
 print(sizescreen)
@@ -29,6 +29,7 @@ pygame.mixer.init()
 screen = pygame.display.set_mode(sizescreen, pygame.FULLSCREEN)
 pygame.display.set_caption("FirstGame")
 clock = pygame.time.Clock()
+# Конец: Использовал материал из https://pythonru.com/uroki/biblioteka-pygame-chast-1-vvedenie
 
 # пораметры игры
 countGuns = 2
