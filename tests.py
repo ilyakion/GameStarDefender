@@ -26,5 +26,11 @@ class Test(unittest.TestCase):
         self.assertEqual(type(spawnStar([100, 100], 0)), objectI)
         self.assertEqual(spawnStar([100, 100], 0).position, [100, 100])
 
+    def test_bullitFly(self):
+        speed = 10
+        a = bullit.bullit("bul.png", position=(0, 0), speed=speed)
+        a.fly()
+        self.assertEqual(a.position, (speed, 0))
+
 if __name__ == "__main__":
     unittest.main()
