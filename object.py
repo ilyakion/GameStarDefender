@@ -83,6 +83,7 @@ class objectI:
         """
         :param size: Длина и ширина прямоугольника с x и y в верхним углу экрана /(int:sizeX, int:sizeY)/
         :param slog: Расширение рамки на k пикселей со всех сторон /int:k/
+        :return: bool
         """
         if self.x < (-self.sizeX / 2) - slog or self.x > size[0] + (self.sizeX / 2) + slog or self.y < (-self.sizeY / 2) - slog or self.y > size[1] + (self.sizeY / 2) + slog:
             return True

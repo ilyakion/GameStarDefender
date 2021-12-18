@@ -18,6 +18,9 @@ class soldier(unit.unit):
 
     def fire(self):
         """
+        :return: list[bullit]
+        """
+        """
         Стреляет соответсвенно своей пушке
         """
         c = []

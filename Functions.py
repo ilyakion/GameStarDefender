@@ -10,7 +10,7 @@ def spawnStar(position,angle,size=(0,30)):
     :param position: Позиция звезды /(int:x, int:y)/
     :param angle: Угол отклонения /int/
     :param size: Размер в пикселях /(int:sizeX, int:sizeY)/
-    :return:
+    :return: objectI
     """
     coef = 3
     if random.randint(0,10)>8:
