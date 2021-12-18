@@ -64,8 +64,6 @@ for i in range(random.randint(int(sizescreen[0] * sizescreen[1] / chanceSpawnSta
     stars.append(spawnStar(position=(random.randint(0, sizescreen[0]), random.randint(0, sizescreen[1])),
                            angle=random.randint(-3, 3)))
 
-print(type(spawnStar(position=(5, 10), angle=0))==object.objectI)
-
 firstBoost = objectI("box.png", size=(50, 50), position=(random.randint(0, sizescreen[0]), -50), speed=5,
                      angle=random.randint(0, 180))
 
